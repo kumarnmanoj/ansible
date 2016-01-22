@@ -1,3 +1,0 @@
----
-repo_file_dest: /etc/yum.repos.d/
-repo_key_url: http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
