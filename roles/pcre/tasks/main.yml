@@ -1,0 +1,16 @@
+---
+- name: Install libpcre3 package (Debian based)
+  action: apt pkg='libpcre3' state=installed
+  when: ansible_pkg_mgr == "apt"
+
+- name: Install libpcre3-dev package (Debian Based)
+  action: apt pkg='libpcre3-dev' state=installed
+  when: ansible_pkg_mgr == "apt"
+
+- name: Install pcre package (Redhat based)
+  action: yum name='pcre' state=installed
+  when: ansible_pkg_mgr == "yum"
+
+- name: Install pcre-devel package (Redhat based)
+  action: yum name='pcre-devel' state=installed
+  when: ansible_pkg_mgr == "yum"

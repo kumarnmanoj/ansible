@@ -1,0 +1,5 @@
+---
+- hosts: devbox 
+  roles:
+      - role: postgres
+        tags: postgres

@@ -1,0 +1,15 @@
+---
+- hosts: all
+  remote_user: root
+  roles:
+  - role: java
+    tags:
+    - java
+  - role: jenkins_centos
+    tags: 
+    - jenkins_centos
+    when: ansible_pkg_mgr == 'yum'
+  - role: jenkins_debian
+    tags:
+    - jenkins_debian
+    when: ansible_pkg_mgr == 'apt'

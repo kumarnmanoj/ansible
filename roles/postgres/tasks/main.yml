@@ -1,0 +1,12 @@
+---
+- name: Install postgres in ubuntu
+  action: apt pkg='postgresql-9.3' state=installed
+  when: ansible_pkg_mgr == "apt"
+
+- name: Create Postgres user
+  script: create_user.sh
+  tags: create-postgres-user
+
+- name: Create psql history file
+  file: path=/home/manoj/.psql_history state=touch owner=manoj group=manoj
+  tags: create-psql-history

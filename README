@@ -1,0 +1,1 @@
+ansible-playbook -i inventory/dev devbox.yml -t create-psql-history --sudo --sudo-user root --ask-sudo-pass

@@ -1,0 +1,9 @@
+---
+- name: Add apt-key of the jenkins
+  apt_key: url={{ debian_key_url }} state=present
+
+- name: Add the jenkins repository
+  apt_repository: repo='deb {{ debian_repo }}' state=present update_cache=yes
+
+- name: Install the jenkins
+  apt: name=jenkins state=present

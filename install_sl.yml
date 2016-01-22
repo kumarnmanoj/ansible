@@ -1,0 +1,6 @@
+---
+- hosts: all
+  #remote_user: root
+  tasks:
+  - name: install latest version of sl
+    apt: pkg=sl state=latest 

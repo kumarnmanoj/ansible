@@ -1,0 +1,25 @@
+---
+- hosts: all
+  remote_user: root
+  vars:
+    nginx_url: http://nginx.org/download/nginx-1.6.2.tar.gz
+  roles:
+  - role: pcre
+    tags:
+    - pcre
+  tasks:
+  - name: Download the archive of nginx source
+    get_url: url={{ nginx_url }} dest=/opt/nginx-1.6.2.tar.gz
+  - name: Unpack the nginx archive
+    action: command creates=/opt/nginx-1.6.2 chdir=/opt tar zxvf /opt/nginx-1.6.2.tar.gz --owner=root
+    register: unpacked_nginx
+  - name: Create the symlink
+    action: file src=/opt/nginx-1.6.2 dest=/opt/nginx state=link force=yes
+  - name: Configure nginx source code
+    command: chdir=/opt/nginx ./configure
+  - name: Make
+    command: chdir=/opt/nginx make
+  - name: Install
+    command: chdir=/opt/nginx make install
+  - name: Link the binaries
+    command: update-alternatives --install /usr/bin/nginx nginx /usr/local/nginx/sbin/nginx 1 
