@@ -1,0 +1,6 @@
+---
+- name: Install mysql client in ubuntu
+  action: apt pkg='mysql-client-core-5.6' state=installed
+  when: ansible_pkg_mgr == "apt"
+
+
