@@ -3,3 +3,5 @@
   roles:
       - role: postgres
         tags: postgres
+      - role: mysql
+        tags: mysql
