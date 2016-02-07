@@ -1,0 +1,64 @@
+---
+- name: Set the timezone
+  file: src=/usr/share/zoneinfo/Asia/Kolkata dest=/etc/localtime force=yes state=link
+  tags:
+    - bootstrap-timezone
+
+- name: Set the clock timezone
+  lineinfile: dest=/etc/sysconfig/clock regexp="^ZONE" line='ZONE="Asia/Kolkata"'
+  tags:
+    - bootstrap-timezone
+
+- name: Set the hostname
+  lineinfile: dest=/etc/sysconfig/network regexp="^HOSTNAME" line=HOSTNAME={{ inventory_hostname }}
+  tags:
+    - bootstrap-hostname
+
+- name: Set the hostname command
+  command: hostname {{ inventory_hostname }}
+  tags:
+    - bootstrap-hostname
+
+- name: Enable EPEL RPM Repo
+  yum: name=http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm state=present
+  tags:
+    - bootstrap-epelrepo
+
+- name: Install EPEL Packages
+  action: yum pkg={{ item }} state=installed
+  with_items:
+    - glances
+    - htop
+    - pv
+  tags:
+    - bootstrap-epelpackages
+
+- name: Install Required Packages
+  action: yum pkg={{ item }} state=installed
+  with_items:
+    - bind-utils
+    - unzip
+    - wget
+    - nano
+    - screen
+    - iotop
+    - vim-enhanced
+    - expect
+    - tree
+    - man
+    - telnet
+    - httpd-tools
+    - subversion
+    - mlocate
+    - git
+    - lsof
+    - strace
+    - nc
+    - curl
+    - mutt
+    - perl-JSON
+    - traceroute
+    - cyrus-sasl-plain
+    - xfsprogs
+  tags:
+    - bootstrap-packages
