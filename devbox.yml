@@ -5,3 +5,7 @@
         tags: postgres
       - role: mysql
         tags: mysql
+      - role: erlang-u
+        tags: role-erlang
+      - role: elixir
+        tags: role-elixir
