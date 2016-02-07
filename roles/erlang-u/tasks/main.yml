@@ -1,0 +1,21 @@
+---
+- name: Install pre-requisites
+  action: apt pkg={{ item }} state=installed
+  with_items:
+    - build-essential
+    - git
+  tags:
+    - erlang-prerequisites
+
+# Alternatively the erlang can also be downloaded as the pre built package from the below url
+# https://packages.erlang-solutions.com/erlang/esl-erlang/FLAVOUR_1_general/esl-erlang_18.2-1~centos~6_amd64.rpm
+
+- name: Download Archive
+  get_url: url={{ erl_deb_url  }} dest={{ erl_deb_path }}
+  tags:
+    - erlang-download-erlang-deb
+
+- name: Install erlang
+  apt: deb={{ erl_deb_path }}
+  tags:
+    - erlang-install-erlang
