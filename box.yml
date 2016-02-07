@@ -1,0 +1,13 @@
+---
+- hosts: mybox
+  roles:
+    - role: bootstrap
+      tags:
+        - role-bootstrap
+    - role: erlang
+      tags:
+        - role-erlang
+    - role: elixir
+      tags: 
+        - role-elixir
+
