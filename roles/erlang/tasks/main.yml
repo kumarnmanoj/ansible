@@ -1,0 +1,28 @@
+---
+- name: Install pre-requisites
+  action: yum pkg={{ item }} state=installed
+  with_items:
+    - gcc
+    - gcc-c++
+    - glibc-devel
+    - make
+    - ncurses-devel
+    - openssl-devel
+    - autoconf
+    - java-1.8.0-openjdk-devel
+    - git
+  tags:
+    - erlang-prerequisites
+
+# Alternatively the erlang can also be downloaded as the pre built package from the below url
+# https://packages.erlang-solutions.com/erlang/esl-erlang/FLAVOUR_1_general/esl-erlang_18.2-1~centos~6_amd64.rpm
+
+- name: Download Archive
+  unarchive: src={{ erl_src_url  }} dest=/usr/local/ creates=/usr/local/{{ erl_src_folder  }} copy=no
+  tags:
+    - erlang-download-erlang-src
+
+- name: Install erlang
+  script: install.sh creates=/usr/local/bin/erl chdir=/usr/local/{{ erl_src_folder }}
+  tags:
+    - erlang-install-erlang
