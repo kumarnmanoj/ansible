@@ -1,0 +1,33 @@
+---
+- name: Development Tools
+  yum: name="@Development Tools" state=present
+  tags:
+    - devtools
+
+- name: Install git
+  yum: name=git state=present
+  tags:
+    - git
+
+- name: Install xclip
+  yum: name=xclip state=present
+  tags:
+    - xclip
+
+- name: Install python development tools
+  yum: name="python-devel" state=present
+  tags:
+    - python-devel
+    - python-related
+
+- name: Install virtualenv
+  yum: name=python-virtualenv state=present
+  tags:
+    - virtualenv
+    - python-related
+
+- name: Install pip
+  yum: name=python-pip state=present
+  tags:
+    - pip
+    - python-related
