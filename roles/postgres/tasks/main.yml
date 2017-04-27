@@ -8,5 +8,5 @@
   tags: create-postgres-user
 
 - name: Create psql history file
-  file: path=/home/manoj/.psql_history state=touch owner=manoj group=manoj
+  file: path=/home/pakki/.psql_history state=touch owner=pakki group=pakki
   tags: create-psql-history

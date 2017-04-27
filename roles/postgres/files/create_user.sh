@@ -1,2 +1,2 @@
-sudo -u postgres createuser --superuser manoj
-sudo -u postgres createdb manoj
+sudo -u postgres createuser --superuser pakki 
+sudo -u postgres createdb pakki

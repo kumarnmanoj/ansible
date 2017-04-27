@@ -1,0 +1,6 @@
+---
+- hosts: ntp
+  roles:
+    - role: ntp
+      tags:
+        - ntp

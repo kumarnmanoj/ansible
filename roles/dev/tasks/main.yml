@@ -4,6 +4,12 @@
   tags:
     - devtools
 
+- name: Autojump
+  yum: name=autojump state=present
+  tags:
+    - autojump
+
+
 - name: Install git
   yum: name=git state=present
   tags:
@@ -13,6 +19,17 @@
   yum: name=xclip state=present
   tags:
     - xclip
+- name: Install vlc
+  yum: name=vlc state=present
+  tags:
+    - vlc
+    - media
+
+- name: Install mplayer
+  yum: name=mplayer state=present
+  tags:
+    - mplayer
+    - media
 
 - name: Install python development tools
   yum: name="python-devel" state=present
