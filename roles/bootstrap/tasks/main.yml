@@ -24,41 +24,43 @@
   tags:
     - bootstrap-epelrepo
 
-- name: Install EPEL Packages
-  action: yum pkg={{ item }} state=installed
-  with_items:
-    - glances
-    - htop
-    - pv
-  tags:
-    - bootstrap-epelpackages
+#- name: Install EPEL Packages
+#  yum:
+#    name:
+#      - glances
+#      - htop
+#      - pv
+#    state: present
+#  tags:
+#    - bootstrap-epelpackages
 
 - name: Install Required Packages
-  action: yum pkg={{ item }} state=installed
-  with_items:
-    - bind-utils
-    - unzip
-    - wget
-    - nano
-    - screen
-    - iotop
-    - vim-enhanced
-    - expect
-    - tree
-    - man
-    - telnet
-    - httpd-tools
-    - subversion
-    - mlocate
-    - git
-    - lsof
-    - strace
-    - nc
-    - curl
-    - mutt
-    - perl-JSON
-    - traceroute
-    - cyrus-sasl-plain
-    - xfsprogs
+  yum:
+    name:
+      - bind-utils
+      - unzip
+      - wget
+      - nano
+      - screen
+      - iotop
+      - vim-enhanced
+      - expect
+      - tree
+      - man
+      - telnet
+      - httpd-tools
+      - subversion
+      - mlocate
+      - git
+      - lsof
+      - strace
+      - nc
+      - curl
+      - mutt
+      - perl-JSON
+      - traceroute
+      - cyrus-sasl-plain
+      - xfsprogs
+    state: present
   tags:
     - bootstrap-packages

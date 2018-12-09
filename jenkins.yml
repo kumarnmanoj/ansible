@@ -1,0 +1,9 @@
+---
+- hosts: jenkins 
+  roles:
+    - role: bootstrap
+      tags:
+        - role-bootstrap
+    - role: jenkins
+      tags:
+        - role-jenkins
